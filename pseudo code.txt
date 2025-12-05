@@ -1,0 +1,97 @@
+at first i have declared the libraries and then some global variables which are required in functions and main so i declare them at top
+
+i have declared a char array and stored the characters for the smooth working of console prining
+
+first function is priningt for the console and in it two loops are used and the output (8-i) is used for correct numbering from bottom to top
+
+now coming to logic part here are all the functions of the phase 3
+Pawn
+if white turn then it will move upward mean -1 in the array row and starting row concept is used for the 2 boxes movement at the start both for black and white
+for the movement of pawn the y component should be same but the x component can move 1 block for every empty box and 2 boxes at the first step meaning the starting row
+now its capturing logic is made as it can capture digonally so the movement should be forward but with +-1 in the y component and the destination box should be non empty more importantly the enemy one
+it can be checked by an if condition that the box contains lowercase chracters for white and uppercase letters for black
+if the conditions satisfy then the move is valid otherwise not
+
+Bishop
+bishop moves digonally means the change in the dx and sx or dy and sy should be same so at first i take their difference and then checking their equality irrespective
+of the sign because for positive it will move in left and for neg the other direction
+if one of these isnt equal than it will return false 
+after that i checked that either the movement is upward or downward now if the diff is greater than 0 than the movement is downward 1 and otherwise -1 upward
+now x and y are the destination by addig the diff in them bec the bishop can move more than one block at a time 
+and then by adding a while loop i check that if there is any piece in the way if tes then return false otherwise not
+and at last checking the destination if there is friendly piece then again return false otherwise it can capture it so true
+
+Rook
+rook can move vertically and horizontally so it must have either of them equal means either sx=dx or sy=dy one of them should be equal
+now fiding the row dir and col dir for upward it would be negative and for lower itt would be positive ..actually it helps me to check the boxes
+between source and destination and now again checking for gaps and friendly pieces
+
+Queen
+It can move like bishop and rook so just checking that if both of them are true then it will be a valid move for queen also we have to cehck that if either of them is true
+
+King 
+it can move on the 8 boxes 
+sign doesnot matter in it because it can move only 1 box but we have to make sure that it isnt moving more than or less than 1 box and again the space and capturing logic is applied
+
+Knight 
+as the knight can move in L shape so making sure that the coordinates are correct by taking thei difference and adding a if statement that eieher of it is true and for knight the sign doesnt matter 
+because it jumps not slide so just checking the magnitude and after that the same studd for the gap and friendly pieces
+
+Movepiece
+after taht there is a movepiece logic in which i am just swapping the destination and source
+
+IsvalidMove
+it is used tolink char with the pieces through switches mainly used in the phase 3
+
+Pawnpromotion 
+main idea is that when a pawn reaches opposite max row than it got promoted so mean at white tturn we have to check the black one and after white turn the white have to be checked
+after every turn the first most and last most rows are scanned to detect any pawn and if find then there will be an option to change them to other pieces which will be asked from the user
+here case validation is applied and if the user entered some other char then it will return and ask again using the while loop
+
+Findking
+we have to find the own king and opposite king for this we will scan whole board and then capture thecoordinates of the king same procedure for both just changing the characters
+
+IssQuareAttack
+now we will check the each possibility from which the king can be caught for this first we check pawn and for pawn we know it can kill digonally mean techanically there will be 4 position in total to kill the king
+we weill scan these positions for the pawn and if found any then we will return the true
+similarly for the knight there will be 8 positions in total and if we check all of them then we will come to know that if the king is in check from the night or not ??
+and by if else it can be copy paste for the white ones 
+
+Now the rooks and queens and bishops can attack fro long range so we have to scan the board till we found them first we will do it for the rook and queen as their logic is simple vertical and horizontal we will get one block to that side and 
+scan till the end of board and if found any other piece break but if empty piece than continue and if rooks or queen of opposite than true
+
+Now for the digonal check the logic is  a bit complex we first take the 2 arrays and store all the boxes mean 4 in total upper right left and lower right left in them as directions of 1 and -1
+then row mein wo aik aik add krty jana hai till board end or same upar wala concept adopt krlena h
+
+Now the opponent king king can move in 8 pieces to aik 3 or 3 ka nested loop lgaky king ki own position ko skip keky all 8 positions pe opponent king ko check krliya if found then return true otherwise return false
+
+
+Checkmate
+for this first we will check that either the king can kill the attacker for this same logic as above two 3 and 3 nested loops and for all the friendly pieces it should pass but for the enemy pieces and empty square the king should imaginary move to there
+and check if it is still in check if yes then check mate other wise not
+now we have to check that if the friendly piece can kill or block the enemy piece to prevent the check but keeping his legal moves
+first we will loop through all the boxes skipping the empty and the opponent ones now once a piece is selected then we will again loop through all the board but in this case we will check only valid moves by applying our previous function and if the move is valid the 
+piece is temporaroily move there to check that if the king is still in check or not if not return false other wise true
+thus it will check all possible outcomes to prevent the check condition of king
+
+after taht simple score and piece functions
+
+
+SFML
+
+now the textures are used to convert the board characters to the pointers of sfml for this the switch is used and cases are applied this makes the drawing simple and more accurate
+it is to use the textures properly for the drawing later
+Sprites are the objects used to draw images in sfml
+
+Fonts are loaded
+then texts are created
+in the turn the string is stored at first so we can change it during thegame
+sprites are used to store the information of the image
+but textures are used to store the actual image
+
+
+
+
+
+
+
