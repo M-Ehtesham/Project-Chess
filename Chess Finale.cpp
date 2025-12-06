@@ -271,9 +271,7 @@ bool findOwnKing(char board[][8], bool whiteKing, int& kx, int& ky) {
 	return false;
 }
 
-// Is square under attack? (kx,ky are coordinates to test against)
-// NOTE: parameter whiteTurn: when true, function checks attacks from BLACK pieces (as in original implementation)
-// kept identical to original implementation
+
 bool isSquareAttack(char board[][8], int& kx, int& ky, bool whiteTurn) {
 	if (whiteTurn) {
 		// check for black pawn and knight attacks
@@ -636,9 +634,7 @@ int main() {
 
 										bool kingSafe = true;
 										if (found) {
-											// isSquareAttack expects whiteTurn to indicate checking for BLACK attacks when true
-											// We want to know if our king (white if whiteTurn) is attacked by opponent:
-											// isSquareAttack(board, kx, ky, whiteTurn) -> checks opponent attacks as in original semantics
+										
 											if (isSquareAttack(board, kx, ky, whiteTurn))
 												kingSafe = false;
 										}
@@ -779,7 +775,7 @@ int main() {
 			} // MouseReleased
 		} // event polling
 
-		// --- Sync sprites to board each frame (so SFML view matches board) ---
+		// --- Sync sprites to board each frame  ---
 		// Move all sprites off-screen first
 		const float offX = -200.f, offY = -200.f;
 		for (int i = 0; i < 8; ++i) { whitePawns[i].setPosition(offX, offY); blackPawns[i].setPosition(offX, offY); }
@@ -962,4 +958,5 @@ int main() {
 
 	return 0;
 }
+
 
