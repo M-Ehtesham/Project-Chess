@@ -1,4 +1,4 @@
-// Replace your file with this. No extra includes beyond SFML & iostream.
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace std;
@@ -34,7 +34,7 @@ void printing(char board[][8], int size) {
 	cout << "   a b c d e f g h\n";
 }
 
-// --- Movement validators (unchanged logic) ---
+// --- Movement validators  ---
 // Pawn
 bool isValidPawnMove(int sx, int sy, int dx, int dy, char board[8][8], bool whiteTurn) {
 	int dir, startrow;
@@ -247,7 +247,7 @@ void checkPawnPromotion(char board[][8], bool whiteTurn) {
 	}
 }
 
-// Finding king (search opponent king) — kept but we add helper below to find own king
+// Finding king (search opponent king) 
 bool FindKing(char board[][8], int& kx, int& ky, bool whiteTurn) {
 	char kingchar = whiteTurn ? 'k' : 'K';
 	for (int i = 0; i < 8; i++) {
@@ -765,7 +765,7 @@ int main() {
 					}
 
 					if (!moved) {
-						// invalid drop — restore piece to original square
+						// invalid drop â€” restore piece to original square
 						board[originalRow][originalCol] = draggedChar;
 					}
 
@@ -962,3 +962,4 @@ int main() {
 
 	return 0;
 }
+
